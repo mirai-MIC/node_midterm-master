@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <link rel="stylesheet" href="/admin/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/admin/css/base.css">
+</head>
+
+<body>
+    <div class="login-body">
+        <div class="login-container">
+            <h4 class="title">黑马程序员 - 博客管理员登录</h4>
+            <div class="login">
+                <form action="/admin/login" method="post" id="loginForm">
+                    <div class="form-group">
+                        <label>邮件</label>
+                        <input type="email" name="email" class="form-control" placeholder="请输入邮件地址">
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input type="password" name="password" class="form-control" placeholder="请输入密码">
+                    </div>
+                    <button type="submit" class="btn btn-primary">登录</button>
+                </form>
+            </div>
+            <div class="tips"></div>
+        </div>
+    </div>
+    <script src="/admin/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/admin/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/admin/js/common.js"></script>
+    <script>
+
+
+
+        // 要获取到提交的表单，在客户端没有验证成功之前，组织其默认提交的行为
+        $('#loginForm').on('submit',function(){
+            // 再提交之前完成客户端验证
+            // 验证邮箱，密码有没有输入
+            // 需不需要获取用户输入的邮箱和密码
+
+            // 在 jquery 中，提供了一个方法，可以一次获取到所有用户输入的信息，拿到的是一个数组
+            // var f = $(this).serializeArray()
+            // console.log(f)
+            var result = serializeToJson($(this))
+            // console.log(result)  //{email: 'zhangsan@qq.com', password: '123456'}
+
+            if(result.email.trim().length == 0 || result.password.trim().length == 0) {
+                // 邮箱没有输入
+                alert('请输入邮箱或者密码')
+                return false;
+            }
+
+            //   [ {name: 'email',value:'zhangsan@qq.com'} ,{name: 'password',value:'123456'}]
+            // 我们希望得到的是JSON 格式：  {email: 'zhangsan@qq.com', password: '123456'}
+            // 没有，我们自己造一个方法： serializeToJson(表单)--- 把传入的表单所有的数据以JSON格式返回 
+
+            // 组织默认行为，不让其提交
+            // return false;
+        })
+    </script>
+</body>
+
+</html>

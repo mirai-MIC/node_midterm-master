@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+            background-color: skyblue;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>{{msg}}</p>
+    </div>
+</body>
+</html>
+<script>
+    // 三秒后返回登录页
+    setTimeout(() => {
+        location.href = '/admin/user'
+    }, 3000);
+</script>
